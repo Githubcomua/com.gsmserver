@@ -17,11 +17,11 @@ public class SearchTests {
     void searchProductByTitle() {
         Selenide.open("https://gsmserver.com/");
 
-        var productName = "Z3X Easy-Jtag Plus Full Set";
+        var productName = "Z3X Easy-Jtag Plus BGA-254 2-in-1 eMMC/UFS Socket Adapter";
         var productId = "872994";
 
         $("[name='searchword']").val(productName).pressEnter();
-        $(".col-12").shouldHave(Condition.text("Z3X Easy-Jtag Plus Full Set"));
+        $(".col-12").shouldHave(Condition.text("productName"));
 
         findProductById(productId).$("product-info_title").shouldHave(text(productName));
         findProductById(productId).$("[data-action-click='site,card.add']").click();
