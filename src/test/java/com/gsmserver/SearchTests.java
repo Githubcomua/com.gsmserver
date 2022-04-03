@@ -21,7 +21,7 @@ public class SearchTests {
         var productId = "872994";
 
         $("[name='searchword']").val(productName).pressEnter();
-        $(".search-title-highlight").shouldHave(Condition.text("Z3X Easy-Jtag Plus Full Set"));
+        $(".col-12").shouldHave(Condition.text("Z3X Easy-Jtag Plus Full Set"));
 
         findProductById(productId).$("product-info_title").shouldHave(text(productName));
         findProductById(productId).$("[data-action-click='site,card.add']").click();
@@ -35,7 +35,7 @@ public class SearchTests {
     }
 
     private SelenideElement findProductById(String productId) {
-        return null;
+        return $(by("data-product-id", productId));
     }
 
 }
