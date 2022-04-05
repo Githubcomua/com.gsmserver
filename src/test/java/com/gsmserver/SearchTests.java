@@ -18,23 +18,24 @@ public class SearchTests {
         Selenide.open("https://gsmserver.com/");
 
         var productName = "Z3X Easy-Jtag Plus BGA-254 2-in-1 eMMC/UFS Socket Adapter";
-        var productId = "872994";
+        var productId = "886748";
 
         $("[name='searchword']").val(productName).pressEnter();
-        $(".col-12").shouldHave(Condition.text("productName"));
+        $(".col-12").shouldHave(text(productName));
 
-        findProductById(productId).$("product-info_title").shouldHave(text(productName));
-        findProductById(productId).$("[data-action-click='site,card.add']").click();
-        findProductById(productId).$(".in-cart").click();
+        $(".pr-t_link").shouldHave(text(productName));
+        $(".btn--add-to-cart").click();
+        $("[space*='cart']").click();
 
-        $("#cart h1").shouldHave(text("Cart"));
+        //$("#cart h1").shouldHave(text("Cart"));
+        //$$("#cart tr[data-product-id").shouldHaveSize(1);
 
-        $$("#,cart tr[data-product-id").shouldHave(CollectionCondition.size(1));
-        findProductById(productId).$(".product-title").shouldHave(text(productName));
+        $(".pr-tiny_title").shouldHave(text(productName));
 
     }
 
     private SelenideElement findProductById(String productId) {
+
         return $(by("data-product-id", productId));
     }
 
